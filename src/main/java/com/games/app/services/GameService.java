@@ -3,6 +3,7 @@ package com.games.app.services;
 import com.games.app.dto.GameDTO;
 import com.games.app.dto.GameMinDTO;
 import com.games.app.entities.Game;
+import com.games.app.projections.GameMinProjection;
 import com.games.app.repositories.GameRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,12 @@ public class GameService {
        List<Game> result = gameRepository.findAll();  //objeto com todos os dados
        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
        return dto;
+    }
+
+    @Transactional(readOnly=true)
+    public List<GameMinDTO> findByList(Long listId){
+        List<GameMinProjection> result = gameRepository.searchByList(listId);  //objeto com todos os dados
+        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+        return dto;
     }
 }
