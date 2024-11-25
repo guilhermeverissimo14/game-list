@@ -13,13 +13,16 @@ public class GameList {
     private Long id;
     private String name;
 
+    private String imgUrl;
+
     public GameList(){
 
     }
 
-    public GameList(Long id, String name) {
+    public GameList(Long id, String name, String imgUrl) {
         this.id = id;
         this.name = name;
+        this.imgUrl = imgUrl;
     }
 
     public Long getId() {
@@ -36,6 +39,14 @@ public class GameList {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     @Override
