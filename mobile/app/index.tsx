@@ -2,6 +2,7 @@ import { ActivityIndicator, FlatList, Image, Platform, StyleSheet, Text, Touchab
 import { listAllGames, listAllGenders, listGamesId } from "@/services/listGames";
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { router } from "expo-router";
 
 interface ListAllGames {
   id: number;
@@ -36,8 +37,6 @@ export default function Home() {
       const response = await listAllGames();
       return response;
     },
-    staleTime: 0,
-    enabled: !!id,
   })
 
   const { data: dataGender, isFetching: isFetchingGender, error: errorGender } = useQuery<ListAllGenders[]>({
@@ -45,7 +44,7 @@ export default function Home() {
     queryFn: async () => {
       const response = await listAllGenders();
       return response;
-    }
+    },
   })
 
   const { data: dataGamesId, isFetching: isFetchingGamesId, error: errorGamesId, refetch } = useQuery<ListAllGames[]>({
@@ -54,7 +53,7 @@ export default function Home() {
       const response = await listGamesId(id!);
       return response;
     },
-
+    enabled: !!id,
   })
 
   function handleGames() {
@@ -113,7 +112,10 @@ export default function Home() {
               numColumns={3}
               columnWrapperStyle={styles.row}
               renderItem={({ item: game }) => (
-                <TouchableOpacity style={styles.card}>
+                <TouchableOpacity
+                  onPress={() => router.push(`game/${game.id}` as any)}
+                  style={styles.card}
+                >
                   <Image style={styles.imgGame} source={{ uri: game.imgUrl }} />
                   <Text style={styles.titleGame}>{game.title}</Text>
                 </TouchableOpacity>
@@ -164,7 +166,10 @@ export default function Home() {
               numColumns={3}
               columnWrapperStyle={styles.row}
               renderItem={({ item: games }) => (
-                <TouchableOpacity style={styles.card}>
+                <TouchableOpacity
+                  onPress={() => router.push(`game/${games.id}` as any)}
+                  style={styles.card}
+                >
                   <Image style={styles.imgGame} source={{ uri: games.imgUrl }} />
                   <Text style={styles.titleGame}>{games.title}</Text>
                 </TouchableOpacity>

@@ -33,3 +33,13 @@ export const listGamesId = async (id: number) => {
     }
 }
 
+export const listGame = async (id: number) => {
+
+    try {
+        const response = await axios.get(`${baseUrl}/games/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(String(error));
+    }
+}
+
