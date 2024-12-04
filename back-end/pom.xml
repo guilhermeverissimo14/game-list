@@ -68,7 +68,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.games.app.AppApplication</mainClass>
+				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
