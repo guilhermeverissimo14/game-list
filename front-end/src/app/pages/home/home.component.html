@@ -1,0 +1,26 @@
+<main class="content-home">
+
+  <div class="content-btns-tab">
+
+    <button [ngClass]="{'btn-active': tabGame}" class="btn-tab" (click)="changeTabGame()">
+      Games
+    </button>
+
+    <button [ngClass]="{'btn-active': tabGenre}" class="btn-tab" (click)="changeTabGenre()">
+      Genêros
+    </button>
+
+  </div>
+
+  <div class="content-card" *ngIf="tabGame">
+    <app-card *ngFor="let game of games$ | async" [id]="game.id" [title]="game.title" [image]="game.imgUrl"></app-card>
+  </div>
+
+
+  <div class="content-card" *ngIf="tabGenre">
+    <app-card *ngFor="let genre of genres$ | async" [id]="genre.id" [title]="genre.name"
+      [image]="genre.imgUrl"></app-card>
+  </div>
+
+
+</main>

@@ -1,0 +1,34 @@
+.content-btns-tab {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.btn-tab {
+  background-color: #3c3d47;
+  width: 45%;
+  padding: 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 18px;
+  border: 1px solid #ffff;
+  color: #ffff;
+  cursor: pointer;
+}
+
+.btn-active {
+  background-color: #ffff;
+  color: #3c3d47;
+}
+
+.content-card {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-evenly;
+}
+
+.card-game img {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}

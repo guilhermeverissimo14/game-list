@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://192.168.100.110:8080";
+const baseUrl = "http://192.168.100.101:8080";
 
 
 export const listAllGames = async () => {
